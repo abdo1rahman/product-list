@@ -1,19 +1,55 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
 import "./Product.css";
+function Product({ name, price, imageUrl, brand }) {
+  const [cartCount, setCartCount] = useState(0);
 
-function Product(props) {
-  const { name, price, imageUrl, brand } = props;
+  const increaseCount = () => setCartCount((prev) => prev + 1);
+  const decreaseCount = () => {
+    if (cartCount > 1) {
+      setCartCount((prev) => prev - 1);
+    } else {
+      setCartCount(0); // Revert to "Add to Cart" state
+    }
+  };
+
   return (
     <div className="product-card">
-      <img src={imageUrl} alt={name} className="product-image" />
-      <button>
-        <img src="../../assets/images/icon-add-to-cart.svg" />
-        Add to Cart
-      </button>
-      <p>{brand}</p>
-      <h2 className="product-name">{name}</h2>
-      <p className="product-price">${price.toFixed(2)}</p>
+      <div className="product-image-container">
+        <img src={imageUrl} alt={name} className="product-image" />
+        {cartCount === 0 ? (
+          <button className="add-to-cart-btn" onClick={increaseCount}>
+            <img
+              src="../../assets/images/icon-add-to-cart.svg"
+              alt="cart"
+              className="icon"
+            />
+            <span>Add to Cart</span>
+          </button>
+        ) : (
+          <div className="counter-btn">
+            <button
+              onClick={decreaseCount}
+              className="icon-btn"
+              id="decrease-btn"
+            >
+              <img src="../../assets/images/icon-decrement-quantity.svg" />
+            </button>
+            <span className="count">{cartCount}</span>
+            <button
+              onClick={increaseCount}
+              className="icon-btn"
+              id="increase-btn"
+            >
+              <img src="../../assets/images/icon-increment-quantity.svg" />
+            </button>
+          </div>
+        )}
+      </div>
+      <div className="product-details">
+        <p className="brand">{brand}</p>
+        <h2 className="product-name">{name}</h2>
+        <p className="product-price">${price.toFixed(2)}</p>
+      </div>
     </div>
   );
 }
