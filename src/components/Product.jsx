@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Product.css";
-function Product({ name, price, imageUrl, brand }) {
+
+function Product({ name, price, imageUrl, category }) {
   const [cartCount, setCartCount] = useState(0);
 
   const increaseCount = () => setCartCount((prev) => prev + 1);
@@ -46,9 +47,9 @@ function Product({ name, price, imageUrl, brand }) {
         )}
       </div>
       <div className="product-details">
-        <p className="brand">{brand}</p>
-        <h2 className="product-name">{name}</h2>
-        <p className="product-price">${price.toFixed(2)}</p>
+        <p className="brand">{category}</p>
+        <h3 className="product-name">{name}</h3>
+        <p className="product-price">${Math.floor(price) + 0.99}</p>
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
 :root {
   --red: hsl(14, 86%, 42%);
   --product-font-size: 16px;
+  --brand-font-size: 14px;
 }
 
 .product-card {
   align-items: center;
-  width: 250px;
+  width: 230px;
   /* height: 100%; */
   padding: 1rem;
   border-radius: 10%;
@@ -13,7 +14,6 @@
 }
 
 .product-image-container {
-  /* //width: fit-content; */
   display: flex;
   flex-direction: column;
 }
@@ -32,7 +32,7 @@
   border-radius: 999px;
   padding: 10px 20px;
   font-family: regular, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #484848;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -113,17 +113,35 @@
 } */
 
 .product-details {
-  align-self: left;
+  align-self: flex-start;
   display: flex;
+  margin: 0;
   flex-direction: column;
-  gap: 4px;
   align-items: left;
   justify-content: center;
   text-align: left;
+  gap: 0.5em;
 }
 
 .brand {
   font-family: medium, sans-serif;
-  font-size: var(--product-font-size);
+  font-size: var(--brand-font-size);
   color: #6e6e6e;
+}
+
+.product-details * {
+  margin: 0;
+  font-family: reqular, sans-serif;
+  padding: 0;
+}
+
+.product-name {
+  font-family: medium, sans-serif;
+  font-size: var(--product-font-size);
+  color: #484848;
+}
+
+.product-price {
+  color: var(--red);
+  font-family: medium, sans-serif;
 }
