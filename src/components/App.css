@@ -1,6 +1,11 @@
 .app {
+  display: flex;
+}
+
+.product-list {
   display: grid;
   width: 70%;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: 5px;
+  row-gap: 5px;
 }

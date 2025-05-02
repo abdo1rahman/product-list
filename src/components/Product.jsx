@@ -1,23 +1,39 @@
 import { useState } from "react";
 import "./Product.css";
 
-function Product({ name, price, imageUrl, category }) {
-  const [cartCount, setCartCount] = useState(0);
+function Product({ name, price, imageUrl, category, cb }) {
+  const [count, setCount] = useState(0);
 
-  const increaseCount = () => setCartCount((prev) => prev + 1);
-  const decreaseCount = () => {
-    if (cartCount > 1) {
-      setCartCount((prev) => prev - 1);
-    } else {
-      setCartCount(0); // Revert to "Add to Cart" state
-    }
+  const increaseCount = () => {
+    setCount((prev) => {
+      const updated = prev + 1;
+      cb({ name, price, count: updated }); // Notify parent
+      return updated;
+    });
   };
+
+  const decreaseCount = () => {
+    setCount((prev) => {
+      const updated = Math.max(0, prev - 1);
+      cb({ name, price, count: updated }); // Notify parent
+      return updated;
+    });
+  };
+
+  // //const handleAddToCart = () => {
+  //   const product = {
+  //     name: name,
+  //     price: price,
+  //     count: count,
+  //   };
+  //   cb(product); // Call the callback function to add the product to the cart
+  // };
 
   return (
     <div className="product-card">
       <div className="product-image-container">
         <img src={imageUrl} alt={name} className="product-image" />
-        {cartCount === 0 ? (
+        {count === 0 ? (
           <button className="add-to-cart-btn" onClick={increaseCount}>
             <img
               src="../../assets/images/icon-add-to-cart.svg"
@@ -35,7 +51,7 @@ function Product({ name, price, imageUrl, category }) {
             >
               <span>-</span>
             </button>
-            <span className="count">{cartCount}</span>
+            <span className="count">{count}</span>
             <button
               onClick={increaseCount}
               className="icon-count-btn"
