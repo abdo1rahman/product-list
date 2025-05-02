@@ -5,37 +5,35 @@
 
 .product-card {
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 250px;
+  /* height: 100%; */
   padding: 1rem;
-  border-radius: 20%;
+  border-radius: 10%;
   background-color: white;
 }
 
 .product-image-container {
-  width: fit-content;
+  /* //width: fit-content; */
   display: flex;
   flex-direction: column;
 }
 
-/* .add-to-cart-btn {
-  /* //display: flex; */
-
 .add-to-cart-btn {
   position: relative;
-  bottom: 20px;
-  width: 60%;
+  bottom: 1.9em;
+  height: 3em;
+  width: 65%;
   gap: 8px;
   align-self: center;
   display: inline-flex;
   align-items: center;
   background: white;
-  border: 2px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   border-radius: 999px;
   padding: 10px 20px;
   font-family: regular, sans-serif;
   font-size: 16px;
-  color: #333;
+  color: #484848;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.2s ease;
@@ -45,17 +43,21 @@
 }
 
 .add-to-cart-btn:hover {
+  transition: border-color 0.2s ease-in-out;
   border: 2px solid var(--red);
 }
 
 .counter-btn {
+  width: 142px;
   display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   align-self: center;
   position: relative;
-  bottom: 20px;
-  width: 60%;
+  bottom: 1.9em;
+  height: 2em;
   z-index: 1;
   background: var(--red);
   color: white;
@@ -64,26 +66,33 @@
   font-weight: bold;
 }
 
-.icon-btn > img {
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
+.icon-btn > span {
+  padding: 0;
   align-self: center;
   justify-self: center;
 }
 
-.icon-btn {
+.icon-count-btn {
   display: flex;
   background: none;
-  height: fit-content;
+  height: 25px;
+  width: 25px;
+  padding: 2px;
+  text-align: center;
   border: 1px solid white;
-  border-radius: 70px;
+  border-radius: 50%;
   align-self: center;
   justify-self: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 6px 10px;
   cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: white;
+  color: var(--red);
+  transition: background-color 0.2s ease-in-out;
 }
 
 .count {
@@ -95,14 +104,22 @@
   border-radius: 10px;
 }
 
+/* #decrease-btn {
+  justify-self: flex-start;
+}
+
+#increase-btn {
+  justify-self: flex-end;
+} */
+
 .product-details {
   align-self: left;
   display: flex;
   flex-direction: column;
+  gap: 4px;
   align-items: left;
   justify-content: center;
   text-align: left;
-  margin-top: 10px;
 }
 
 .brand {

@@ -29,18 +29,18 @@ function Product({ name, price, imageUrl, brand }) {
           <div className="counter-btn">
             <button
               onClick={decreaseCount}
-              className="icon-btn"
+              className="icon-count-btn"
               id="decrease-btn"
             >
-              <img src="../../assets/images/icon-decrement-quantity.svg" />
+              <span>-</span>
             </button>
             <span className="count">{cartCount}</span>
             <button
               onClick={increaseCount}
-              className="icon-btn"
+              className="icon-count-btn"
               id="increase-btn"
             >
-              <img src="../../assets/images/icon-increment-quantity.svg" />
+              <span>+</span>
             </button>
           </div>
         )}
