@@ -1,43 +1,23 @@
-import { useState } from "react";
 import "./Product.css";
 
-function Product({ name, price, imageUrl, category, cb }) {
-  const [count, setCount] = useState(0);
-
+function Product({ id, name, price, imageUrl, category, count, cb }) {
   const increaseCount = () => {
-    setCount((prev) => {
-      const updated = prev + 1;
-      cb({ name, price, count: updated }); // Notify parent
-      return updated;
-    });
+    cb({ id, name, price, count: count + 1 });
   };
 
   const decreaseCount = () => {
-    setCount((prev) => {
-      const updated = Math.max(0, prev - 1);
-      cb({ name, price, count: updated }); // Notify parent
-      return updated;
-    });
+    cb({ id, name, price, count: Math.max(0, count - 1) });
   };
-
-  // //const handleAddToCart = () => {
-  //   const product = {
-  //     name: name,
-  //     price: price,
-  //     count: count,
-  //   };
-  //   cb(product); // Call the callback function to add the product to the cart
-  // };
 
   return (
     <div className="product-card">
       <div className="product-image-container">
-        <img src={imageUrl} alt={name} className="product-image" />
+        <img src={`/${imageUrl}`} alt={name} className="product-image" />
         {count === 0 ? (
           <button className="add-to-cart-btn" onClick={increaseCount}>
             <img
-              src="../../assets/images/icon-add-to-cart.svg"
-              alt="cart"
+              src="/assets/images/icon-add-to-cart.svg"
+              alt="Add to cart icon"
               className="icon"
             />
             <span>Add to Cart</span>
@@ -48,6 +28,7 @@ function Product({ name, price, imageUrl, category, cb }) {
               onClick={decreaseCount}
               className="icon-count-btn"
               id="decrease-btn"
+              aria-label="Decrease quantity"
             >
               <span>-</span>
             </button>
@@ -56,6 +37,7 @@ function Product({ name, price, imageUrl, category, cb }) {
               onClick={increaseCount}
               className="icon-count-btn"
               id="increase-btn"
+              aria-label="Increase quantity"
             >
               <span>+</span>
             </button>
@@ -65,7 +47,7 @@ function Product({ name, price, imageUrl, category, cb }) {
       <div className="product-details">
         <p className="brand">{category}</p>
         <h3 className="product-name">{name}</h3>
-        <p className="product-price">${Math.floor(price) + 0.99}</p>
+        <p className="product-price">${price.toFixed(2)}</p>
       </div>
     </div>
   );

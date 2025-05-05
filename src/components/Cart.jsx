@@ -1,33 +1,37 @@
 import "./Cart.css";
-import emptyCart from "../../public/assets/images/illustration-empty-cart.svg";
+import emptyCart from "/assets/images/illustration-empty-cart.svg";
 
-function Cart({ cartItems, setCartItems, totalPrice, setTotalPrice }) {
+function Cart({ cartItems, totalPrice, removeItem }) {
   return (
     <div className="cart-container">
-      <h2>Your Cart ({cartItems.length})</h2>
+      <h2>
+        Your Cart ({cartItems.reduce((sum, item) => sum + item.count, 0)})
+      </h2>
       {cartItems.length === 0 ? (
         <img src={emptyCart} alt="Empty Cart" />
       ) : (
-        cartItems.map((item) => (
-          <>
+        <>
+          {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
               <div className="cart-item-details">
                 <h4>{item.name}</h4>
-                <p>${item.price}</p>
+                <p>
+                  ${item.price.toFixed(2)} x {item.count} = $
+                  {(item.price * item.count).toFixed(2)}
+                </p>
               </div>
               <button
-                onClick={() =>
-                  setCartItems(cartItems.filter((i) => i.id !== item.id))
-                }
+                onClick={() => removeItem(item)}
+                aria-label={`Remove ${item.name} from cart`}
               >
-                Remove
+                ✕
               </button>
             </div>
-            <div className="cart-total">
-              <h3>Total Price: ${totalPrice}</h3>
-            </div>
-          </>
-        ))
+          ))}
+          <div className="cart-total">
+            <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
+          </div>
+        </>
       )}
     </div>
   );
