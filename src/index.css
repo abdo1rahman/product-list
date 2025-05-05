@@ -1,3 +1,14 @@
+:root {
+  --red: hsl(14, 86%, 42%);
+  --product-font-size: 16px;
+  --brand-font-size: 14px;
+  --darkest-rose: hsl(14, 65%, 9%);
+  --dark-rose: hsl(12, 20%, 44%);
+  --rose: hsl(7, 20%, 60%);
+  --light-rose: hsl(14, 25%, 72%);
+  --lightest-rose: hsl(13, 31%, 94%);
+}
+
 @font-face {
   font-family: regular;
   src: url("../assets/fonts/static/RedHatText-Regular.ttf") format("truetype");
@@ -6,32 +17,26 @@
 }
 
 @font-face {
-  font-family: bold;
+  font-family: bold-font;
   src: url("../assets/fonts/static/RedHatText-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: light;
+  font-family: light-font;
   src: url("../assets/fonts/static/RedHatText-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: medium;
+  font-family: medium-font;
   src: url("../assets/fonts/static/RedHatText-SemiBold.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
-/* #root {
-  /* //max-width: 70rem; 
-  display: flex;
-  justify-content: center;
-} */
-
 body {
-  margin: 1rem;
+  margin: 1.2rem;
   padding: 0;
   font-family: reqular, sans-serif;
   background-color: hsl(13, 31%, 94%);

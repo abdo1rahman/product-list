@@ -1,0 +1,118 @@
+.cart-container {
+  padding: 0 1.5rem 2rem;
+  flex: 4;
+  display: flex;
+  font-family: regular, sans-serif;
+  flex-direction: column;
+  width: auto;
+  height: fit-content;
+  /* * position: sticky; */
+  background-color: white;
+  border-radius: 20px;
+}
+
+.cart-container > h2 {
+  font-size: 2rem;
+  font-family: bold-font, sans-serif;
+  color: var(--red);
+}
+
+.empty-cart-img {
+  width: 20rem;
+  align-self: center;
+}
+
+.item-count {
+  color: var(--red);
+  font-family: medium-font, sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.price-per-item {
+  color: var(--light-rose);
+}
+
+.item-total {
+  color: var(--rose);
+  font-family: medium-font, sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.remove-btn {
+  width: 20px;
+  height: 20px;
+  font-size: 80%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--rose);
+  border-radius: 100%;
+  color: var(--rose);
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  border: 2px solid var(--dark-rose);
+  color: var(--dark-rose);
+  font-weight: 900;
+  transition: border 0.05s ease-in-out;
+}
+
+.price-details {
+  display: flex;
+  gap: 2rem;
+}
+
+.cart-total {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  color: var(--rose);
+}
+
+.order-total {
+  color: black;
+  font-family: bold-font, sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.cart-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#carbon-neutral {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--lightest-rose);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.confirm {
+  margin-top: 2rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--red);
+  color: white;
+  font-family: regular, sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.confirm:hover {
+  background-color: hsl(14, 89%, 32%);
+  transition: background-color 0.22s ease-in-out;
+}
