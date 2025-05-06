@@ -13,6 +13,19 @@ function App() {
     }, {})
   );
 
+  const resetStates = () => {
+    setCartItems([]);
+    setProductCounts(
+      products.reduce((acc, product) => {
+        acc[product.id] = 0;
+        return acc;
+      }, {})
+    );
+    setOrderConfirmed(false);
+  };
+
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+
   // Derive totalPrice from cartItems
   const totalPrice = useMemo(() => {
     return cartItems.reduce((sum, item) => sum + item.count * item.price, 0);
@@ -76,6 +89,9 @@ function App() {
 
   return (
     <div className="app">
+      {orderConfirmed && (
+        <ConfirmOrder cartItems={cartItems} onClose={resetStates} />
+      )}
       <div className="product-list">
         {products.map((product) => (
           <Product
@@ -94,6 +110,7 @@ function App() {
         cartItems={cartItems}
         totalPrice={totalPrice}
         removeItem={removeItem}
+        confirmOrder={() => setOrderConfirmed(true)}
       />
     </div>
   );

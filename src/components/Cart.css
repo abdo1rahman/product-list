@@ -9,6 +9,9 @@
   /* * position: sticky; */
   background-color: white;
   border-radius: 20px;
+  position: sticky;
+  top: 1rem;
+  bottom: 0;
 }
 
 .cart-container > h2 {
@@ -22,25 +25,8 @@
   align-self: center;
 }
 
-.item-count {
-  color: var(--red);
-  font-family: medium-font, sans-serif;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.price-per-item {
-  color: var(--light-rose);
-}
-
-.item-total {
-  color: var(--rose);
-  font-family: medium-font, sans-serif;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.remove-btn {
+.remove-btn,
+.new-order-btn {
   width: 20px;
   height: 20px;
   font-size: 80%;
@@ -54,7 +40,8 @@
   cursor: pointer;
 }
 
-.remove-btn:hover {
+.remove-btn:hover,
+.new-order-btn:hover {
   border: 2px solid var(--dark-rose);
   color: var(--dark-rose);
   font-weight: 900;

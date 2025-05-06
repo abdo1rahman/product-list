@@ -41,3 +41,52 @@ body {
   font-family: reqular, sans-serif;
   background-color: hsl(13, 31%, 94%);
 }
+
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Edge */
+}
+
+.item-count {
+  color: var(--red);
+  font-family: medium-font, sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.price-per-item {
+  color: var(--light-rose);
+}
+
+.item-total {
+  color: var(--rose);
+  font-family: medium-font, sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.order-confirmation {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: min(90%, 40rem);
+  height: fit-content;
+  z-index: 1000;
+}
