@@ -2,6 +2,7 @@ import "./App.css";
 import Product from "./Product.jsx";
 import products from "../../data.json";
 import Cart from "./Cart.jsx";
+import ConfirmOrder from "./ConfirmOrder.jsx";
 import { useState, useMemo } from "react";
 
 function App() {
