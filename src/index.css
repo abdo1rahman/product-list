@@ -55,18 +55,19 @@ body::-webkit-scrollbar {
   color: var(--red);
   font-family: medium-font, sans-serif;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
 }
 
 .price-per-item {
   color: var(--light-rose);
+  font-size: 0.7rem;
 }
 
 .item-total {
   color: var(--rose);
   font-family: medium-font, sans-serif;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
 }
 
 .overlay {

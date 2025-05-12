@@ -89,24 +89,30 @@ function App() {
   };
 
   return (
-    <div className="app">
-      {orderConfirmed && (
-        <ConfirmOrder cartItems={cartItems} onClose={resetStates} />
-      )}
-      <div className="product-list">
-        {products.map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            category={product.category}
-            imageUrl={product.image.desktop}
-            name={product.name}
-            price={product.price}
-            count={productCounts[product.id]}
-            cb={updateCart}
-          />
-        ))}
+    <div className="header">
+      <div>
+        <h1>Deserts</h1>
+        <div className="app">
+          {orderConfirmed && (
+            <ConfirmOrder cartItems={cartItems} onClose={resetStates} />
+          )}
+          <div className="product-list">
+            {products.map((product) => (
+              <Product
+                key={product.id}
+                id={product.id}
+                category={product.category}
+                imageUrl={product.image.desktop}
+                name={product.name}
+                price={product.price}
+                count={productCounts[product.id]}
+                cb={updateCart}
+              />
+            ))}
+          </div>
+        </div>
       </div>
+
       <Cart
         cartItems={cartItems}
         totalPrice={totalPrice}

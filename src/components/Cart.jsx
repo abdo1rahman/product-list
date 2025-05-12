@@ -46,7 +46,7 @@ function Cart({ cartItems, totalPrice, removeItem, confirmOrder }) {
                   </div>
                   <hr
                     style={{
-                      border: "0.001px solid hsl(6, 22.00%, 72.40%)",
+                      border: "0.001px solid hsl(6, 32.00%, 81.00%)",
                       marginTop: "1rem",
                     }}
                   />

@@ -2,6 +2,12 @@
   display: flex;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
 .product-list {
   flex: 10;
   display: grid;

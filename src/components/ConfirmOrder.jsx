@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function ConfirmOrder({ cartItems, onClose }) {
   return (
     <div className="overlay">
