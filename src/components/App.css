@@ -16,9 +16,3 @@
   gap: 5px;
   row-gap: 5px;
 }
-
-.order-confirmation {
-  z-index: 1;
-  position: absolute;
-  display: flex;
-}

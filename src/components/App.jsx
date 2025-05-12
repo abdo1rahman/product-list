@@ -90,12 +90,12 @@ function App() {
 
   return (
     <div className="header">
+      {orderConfirmed && (
+        <ConfirmOrder cartItems={cartItems} onClose={resetStates} />
+      )}
       <div>
         <h1>Deserts</h1>
         <div className="app">
-          {orderConfirmed && (
-            <ConfirmOrder cartItems={cartItems} onClose={resetStates} />
-          )}
           <div className="product-list">
             {products.map((product) => (
               <Product
@@ -112,7 +112,6 @@ function App() {
           </div>
         </div>
       </div>
-
       <Cart
         cartItems={cartItems}
         totalPrice={totalPrice}
