@@ -2,6 +2,14 @@
   display: flex;
 }
 
+#root {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  height: 100dvh;
+  width: 100dvw;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
