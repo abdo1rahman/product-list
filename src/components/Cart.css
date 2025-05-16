@@ -9,12 +9,12 @@
   background-color: white;
   border-radius: 20px;
   position: sticky;
-  top: 1rem;
+  top: 2.5rem;
   bottom: 0;
 }
 
 .cart-container > h2 {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-family: bold-font, sans-serif;
   color: var(--red);
 }

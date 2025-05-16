@@ -44,21 +44,18 @@ function App() {
       let updatedItems = [...prevItems];
 
       if (existingProductIndex !== -1) {
-        // Product exists in cart
         if (newCount === 0) {
-          // Remove item from cart
           updatedItems.splice(existingProductIndex, 1);
         } else {
-          // Update existing item
           updatedItems[existingProductIndex] = {
             id: product.id,
             name: product.name,
             price: productPrice,
             count: newCount,
+            image: product.image, // Add image property
           };
         }
       } else if (newCount > 0) {
-        // Add new item to cart
         updatedItems = [
           ...prevItems,
           {
@@ -66,11 +63,11 @@ function App() {
             name: product.name,
             price: productPrice,
             count: newCount,
+            image: product.image,
           },
         ];
       }
 
-      // Update product counts
       setProductCounts((prev) => ({
         ...prev,
         [product.id]: newCount,
@@ -89,36 +86,42 @@ function App() {
   };
 
   return (
-    <div className="header">
+    <>
       {orderConfirmed && (
-        <ConfirmOrder cartItems={cartItems} onClose={resetStates} />
+        <ConfirmOrder
+          cartItems={cartItems}
+          onClose={resetStates}
+          totalPrice={totalPrice}
+        />
       )}
-      <div>
-        <h1>Deserts</h1>
-        <div className="app">
-          <div className="product-list">
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                id={product.id}
-                category={product.category}
-                imageUrl={product.image.desktop}
-                name={product.name}
-                price={product.price}
-                count={productCounts[product.id]}
-                cb={updateCart}
-              />
-            ))}
+      <div className="header">
+        <div>
+          <h1>Deserts</h1>
+          <div className="app">
+            <div className="product-list">
+              {products.map((product) => (
+                <Product
+                  key={product.id}
+                  id={product.id}
+                  category={product.category}
+                  imageUrl={product.image.desktop}
+                  name={product.name}
+                  price={product.price}
+                  count={productCounts[product.id]}
+                  cb={updateCart}
+                />
+              ))}
+            </div>
           </div>
         </div>
+        <Cart
+          cartItems={cartItems}
+          totalPrice={totalPrice}
+          removeItem={removeItem}
+          confirmOrder={() => setOrderConfirmed(true)}
+        />
       </div>
-      <Cart
-        cartItems={cartItems}
-        totalPrice={totalPrice}
-        removeItem={removeItem}
-        confirmOrder={() => setOrderConfirmed(true)}
-      />
-    </div>
+    </>
   );
 }
 

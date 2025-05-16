@@ -1,0 +1,87 @@
+/* Add to Cart.css or create ConfirmOrder.css */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.order-confirmation {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--lightest-rose);
+  padding-bottom: 1rem;
+}
+
+.order-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.order-confirmation h2 {
+  font-family: bold-font, sans-serif;
+  color: var(--darkest-rose);
+}
+
+.order-confirmation p {
+  font-family: regular, sans-serif;
+  color: var(--rose);
+}
+
+.order-confirmation h4 {
+  font-family: medium-font, sans-serif;
+  margin: 0;
+}
+
+.new-order-btn {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  width: 100%;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: regular, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.order-total {
+  font-family: medium-font, sans-serif;
+  color: var(--dark-rose);
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-order-btn:hover {
+  background-color: hsl(14, 89%, 32%);
+  color: white;
+  transition: background-color 0.22s ease-in-out;
+  border: none;
+}
