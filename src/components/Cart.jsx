@@ -1,9 +1,9 @@
 import "./Cart.css";
 import emptyCart from "/assets/images/illustration-empty-cart.svg";
 
-function Cart({ cartItems, totalPrice, removeItem, confirmOrder }) {
+function Cart({ cartItems, totalPrice, removeItem, confirmOrder, overlay }) {
   return (
-    <div className="cart-container">
+    <div className={overlay ? "overlay cart-container" : "cart-container"}>
       <h2>
         Your Cart ({cartItems.reduce((sum, item) => sum + item.count, 0)})
       </h2>

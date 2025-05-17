@@ -3,6 +3,7 @@ import Product from "./Product.jsx";
 import products from "../../data.json";
 import Cart from "./Cart.jsx";
 import ConfirmOrder from "./ConfirmOrder.jsx";
+import ButtonCart from "./ButtonCart.jsx";
 import { useState, useMemo } from "react";
 
 function App() {
@@ -13,6 +14,16 @@ function App() {
       return acc;
     }, {})
   );
+
+  const [CartVisible, setCartVisible] = useState(false);
+  const toggleCart = () => {
+    setCartVisible((prev) => !prev);
+  };
+
+  const windowWidth = window.innerWidth;
+  const isDesktop = windowWidth >= 1150;
+  const isTablet = windowWidth < 1150 && windowWidth >= 768;
+  const isMobile = windowWidth < 768;
 
   const resetStates = () => {
     setCartItems([]);
@@ -86,7 +97,25 @@ function App() {
   };
 
   return (
-    <>
+    <div>
+      <div>
+        {isTablet && (
+          <ButtonCart
+            count={cartItems.reduce((sum, item) => sum + item.count, 0)}
+            onClick={toggleCart}
+          />
+        )}
+      </div>
+      {CartVisible && (isTablet || isMobile) && (
+        <Cart
+          cartItems={cartItems}
+          totalPrice={totalPrice}
+          removeItem={removeItem}
+          confirmOrder={() => setOrderConfirmed(true)}
+          onClose={toggleCart}
+          overlay={true}
+        />
+      )}
       {orderConfirmed && (
         <ConfirmOrder
           cartItems={cartItems}
@@ -114,14 +143,17 @@ function App() {
             </div>
           </div>
         </div>
-        <Cart
-          cartItems={cartItems}
-          totalPrice={totalPrice}
-          removeItem={removeItem}
-          confirmOrder={() => setOrderConfirmed(true)}
-        />
+        {isDesktop && (
+          <Cart
+            cartItems={cartItems}
+            totalPrice={totalPrice}
+            removeItem={removeItem}
+            confirmOrder={() => setOrderConfirmed(true)}
+            overlay={false}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

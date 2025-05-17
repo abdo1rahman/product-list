@@ -9,6 +9,10 @@
   flex-direction: column;
 }
 
+.img-border {
+  border: 2px solid var(--red);
+}
+
 .add-to-cart-btn {
   position: relative;
   bottom: 1.9em;

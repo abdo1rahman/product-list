@@ -12,7 +12,11 @@ function Product({ id, name, price, imageUrl, category, count, cb }) {
   return (
     <div className="product-card">
       <div className="product-image-container">
-        <img src={`/${imageUrl}`} alt={name} className="product-image" />
+        <img
+          src={`/${imageUrl}`}
+          alt={name}
+          className={`product-image ${count === 0 ? "" : "img-border"}`}
+        />
         {count === 0 ? (
           <button className="add-to-cart-btn" onClick={increaseCount}>
             <img

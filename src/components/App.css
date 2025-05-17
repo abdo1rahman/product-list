@@ -24,3 +24,10 @@
   gap: 5px;
   row-gap: 5px;
 }
+
+@media (max-width: 768px) {
+  .product-list {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -15,32 +15,34 @@ export default function ConfirmOrder({ cartItems, onClose, totalPrice }) {
         <h2>Order Confirmed!</h2>
         <p>We hope you enjoy your food!</p>
         <div className="order-summary">
-          {cartItems.map((item) => (
-            <div key={item.id} className="order-item">
+          {cartItems.map(({ id, name, price, count }) => (
+            <div key={id} className="order-item">
               <div style={{ display: "flex" }}>
                 <img
-                  src={item?.thumbnail}
-                  alt={item?.name}
+                  src={`../../public/assets/images/image-${name
+                    .replace(/[\s_]+/g, "-")
+                    .toLowerCase()}-thumbnail.jpg`}
+                  alt={name}
                   className="order-image"
                 />
                 <div>
-                  <h4>{item.name}</h4>
+                  <h4>{name}</h4>
                   <div style={{ display: "flex", gap: "2rem" }}>
                     <span className="item-count" style={{ fontSize: "1rem" }}>
-                      {item.count}x
+                      {count}x
                     </span>
                     <span
                       className="price-per-item"
                       style={{ fontSize: "1rem" }}
                     >
-                      @{item.price.toFixed(2)}
+                      @{price.toFixed(2)}
                     </span>
                   </div>
                 </div>
               </div>
 
               <h2 className="item-total" style={{ fontSize: "1rem" }}>
-                ${(item.price * item.count).toFixed(2)}
+                ${(price * count).toFixed(2)}
               </h2>
             </div>
           ))}
