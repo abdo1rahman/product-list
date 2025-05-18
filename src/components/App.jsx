@@ -22,8 +22,6 @@ function App() {
 
   const windowWidth = window.innerWidth;
   const isDesktop = windowWidth >= 1150;
-  ////const isTablet = windowWidth < 1150 && windowWidth >= 768;
-  ////const isMobile = windowWidth < 768;
 
   const resetStates = () => {
     setCartItems([]);
@@ -98,35 +96,57 @@ function App() {
   };
 
   return (
-    <div>
-      <div>
-        {!isDesktop && (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <nav
+        style={{
+          position: "sticky",
+          top: "0px",
+          backgroundColor: "var(--lightest-rose)",
+          padding: "10px 20px",
+          // boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          marginBottom: "20px",
+          marginTop: 0,
+          width: "100dvw",
+          zIndex: 1000,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Desserts</h1>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <ButtonCart
             count={cartItems.reduce((sum, item) => sum + item.count, 0)}
             onClick={toggleCart}
           />
+        </div>
+      </nav>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {CartVisible && !isDesktop && (
+          <Cart
+            cartItems={cartItems}
+            totalPrice={totalPrice}
+            removeItem={removeItem}
+            confirmOrder={() => setOrderConfirmed(true)}
+            overlay={true}
+            onClose={toggleCart}
+          />
         )}
-      </div>
-      {CartVisible && !isDesktop && (
-        <Cart
-          cartItems={cartItems}
-          totalPrice={totalPrice}
-          removeItem={removeItem}
-          confirmOrder={() => setOrderConfirmed(true)}
-          overlay={true}
-          onClose={toggleCart}
-        />
-      )}
-      {orderConfirmed && (
-        <ConfirmOrder
-          cartItems={cartItems}
-          onClose={resetStates}
-          totalPrice={totalPrice}
-        />
-      )}
-      <div className="header">
-        <div>
-          <h1>Desserts</h1>
+        {orderConfirmed && (
+          <ConfirmOrder
+            cartItems={cartItems}
+            onClose={resetStates}
+            totalPrice={totalPrice}
+          />
+        )}
+        <div className="header">
           <div className="app">
             <div className="product-list">
               {products.map((product) => (
@@ -143,16 +163,16 @@ function App() {
               ))}
             </div>
           </div>
+          {isDesktop && (
+            <Cart
+              cartItems={cartItems}
+              totalPrice={totalPrice}
+              removeItem={removeItem}
+              confirmOrder={() => setOrderConfirmed(true)}
+              overlay={false}
+            />
+          )}
         </div>
-        {isDesktop && (
-          <Cart
-            cartItems={cartItems}
-            totalPrice={totalPrice}
-            removeItem={removeItem}
-            confirmOrder={() => setOrderConfirmed(true)}
-            overlay={false}
-          />
-        )}
       </div>
     </div>
   );
