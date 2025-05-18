@@ -18,14 +18,6 @@ export default function ConfirmOrder({ cartItems, onClose, totalPrice }) {
           {cartItems.map(({ id, name, price, count }) => (
             <div key={id} className="order-item">
               <div style={{ display: "flex" }}>
-                <img
-                  src={`/assets/images/image-${name
-                    .replace(/[\s_]+/g, "-")
-                    .toLowerCase()}-thumbnail.jpg`}
-                  alt={name}
-                  className="order-image"
-                />
-                {console.log(name.replace(/[\s_]+/g, "-").toLowerCase())}
                 <div>
                   <h4>{name}</h4>
                   <div style={{ display: "flex", gap: "2rem" }}>

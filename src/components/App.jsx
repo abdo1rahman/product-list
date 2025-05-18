@@ -97,30 +97,37 @@ function App() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <nav
-        style={{
-          position: "sticky",
-          top: "0px",
-          backgroundColor: "var(--lightest-rose)",
-          padding: "10px 20px",
-          // boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-          marginBottom: "20px",
-          marginTop: 0,
-          width: "100dvw",
-          zIndex: 1000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Desserts</h1>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <ButtonCart
-            count={cartItems.reduce((sum, item) => sum + item.count, 0)}
-            onClick={toggleCart}
-          />
-        </div>
-      </nav>
+      {!isDesktop ? (
+        <>
+          <nav
+            style={{
+              position: "sticky",
+              top: "0px",
+              backgroundColor: "var(--lightest-rose)",
+              padding: "10px 20px",
+              marginBottom: "20px",
+              marginTop: 0,
+              width: "100dvw",
+              zIndex: 1000,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              overflow: "hidden",
+            }}
+          >
+            <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Desserts</h1>
+
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <ButtonCart
+                count={cartItems.reduce((sum, item) => sum + item.count, 0)}
+                onClick={toggleCart}
+              />
+            </div>
+          </nav>
+        </>
+      ) : (
+        <h1>Desserts</h1>
+      )}
       <div
         style={{
           display: "flex",
