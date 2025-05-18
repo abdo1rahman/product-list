@@ -95,47 +95,18 @@ function App() {
     }));
   };
 
-  return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      {!isDesktop ? (
+  if (CartVisible && !isDesktop) {
+    if (orderConfirmed && !isDesktop) {
+      return (
+        <ConfirmOrder
+          cartItems={cartItems}
+          onClose={resetStates}
+          totalPrice={totalPrice}
+        />
+      );
+    } else {
+      return (
         <>
-          <nav
-            style={{
-              position: "sticky",
-              top: 0,
-              backgroundColor: "var(--lightest-rose)",
-              padding: "10px 20px",
-              marginBottom: "20px",
-              marginTop: 0,
-              width: "100dvw",
-              zIndex: 1000,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Desserts</h1>
-
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <ButtonCart
-                count={cartItems.reduce((sum, item) => sum + item.count, 0)}
-                onClick={toggleCart}
-              />
-            </div>
-          </nav>
-        </>
-      ) : (
-        <h1>Desserts</h1>
-      )}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {CartVisible && !isDesktop && (
           <Cart
             cartItems={cartItems}
             totalPrice={totalPrice}
@@ -144,44 +115,88 @@ function App() {
             overlay={true}
             onClose={toggleCart}
           />
-        )}
-        {orderConfirmed && (
-          <ConfirmOrder
-            cartItems={cartItems}
-            onClose={resetStates}
-            totalPrice={totalPrice}
-          />
-        )}
-        <div className="header">
-          <div className="app">
-            <div className="product-list">
-              {products.map((product) => (
-                <Product
-                  key={product.id}
-                  id={product.id}
-                  category={product.category}
-                  imageUrl={product.image.desktop}
-                  name={product.name}
-                  price={product.price}
-                  count={productCounts[product.id]}
-                  cb={updateCart}
+        </>
+      );
+    }
+  } else {
+    return (
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {!isDesktop ? (
+          <>
+            <nav
+              style={{
+                position: "sticky",
+                top: 0,
+                backgroundColor: "var(--lightest-rose)",
+                padding: "10px 20px",
+                marginBottom: "20px",
+                marginTop: 0,
+                width: "100dvw",
+                zIndex: 1000,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Desserts</h1>
+
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <ButtonCart
+                  count={cartItems.reduce((sum, item) => sum + item.count, 0)}
+                  onClick={toggleCart}
                 />
-              ))}
-            </div>
-          </div>
-          {isDesktop && (
-            <Cart
+              </div>
+            </nav>
+          </>
+        ) : (
+          <h1>Desserts</h1>
+        )}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {orderConfirmed && (
+            <ConfirmOrder
               cartItems={cartItems}
+              onClose={resetStates}
               totalPrice={totalPrice}
-              removeItem={removeItem}
-              confirmOrder={() => setOrderConfirmed(true)}
-              overlay={false}
             />
           )}
+          <div className="header">
+            <div className="app">
+              <div className="product-list">
+                {products.map((product) => (
+                  <Product
+                    key={product.id}
+                    id={product.id}
+                    category={product.category}
+                    imageUrl={product.image.desktop}
+                    name={product.name}
+                    price={product.price}
+                    count={productCounts[product.id]}
+                    cb={updateCart}
+                  />
+                ))}
+              </div>
+            </div>
+            {isDesktop && (
+              <Cart
+                cartItems={cartItems}
+                totalPrice={totalPrice}
+                removeItem={removeItem}
+                confirmOrder={() => setOrderConfirmed(true)}
+                overlay={false}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

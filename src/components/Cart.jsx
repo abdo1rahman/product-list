@@ -10,10 +10,9 @@ function Cart({
   onClose,
 }) {
   return (
-    <div className={overlay ? "overlay" : ""}>
+    <div>
       <div>
-        {/* {overlay ? <button className="exit-btn remove-btn">X</button> : null} */}
-        <div className={overlay ? "cart-overlay" : "cart-container"}>
+        <div className={overlay ? "cart-overlay" : "cart-container"} style={{}}>
           <div className="cart-header">
             <h2>
               Your Cart ({cartItems.reduce((sum, item) => sum + item.count, 0)})
