@@ -102,7 +102,7 @@ function App() {
           <nav
             style={{
               position: "sticky",
-              top: "0px",
+              top: 0,
               backgroundColor: "var(--lightest-rose)",
               padding: "10px 20px",
               marginBottom: "20px",
@@ -112,7 +112,6 @@ function App() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              overflow: "hidden",
             }}
           >
             <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Desserts</h1>
