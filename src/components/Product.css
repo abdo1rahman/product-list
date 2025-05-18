@@ -86,6 +86,12 @@
   transition: background-color 0.2s ease-in-out;
 }
 
+.icon {
+  height: 1.9rem;
+  width: 1.5rem;
+  object-fit: scale-down;
+}
+
 .count {
   margin: 0 10px;
   font-size: 16px;
@@ -94,14 +100,6 @@
 .product-image-container img {
   border-radius: 10px;
 }
-
-/* #decrease-btn {
-  justify-self: flex-start;
-}
-
-#increase-btn {
-  justify-self: flex-end;
-} */
 
 .product-details {
   align-self: flex-start;

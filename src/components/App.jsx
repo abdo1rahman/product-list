@@ -22,8 +22,8 @@ function App() {
 
   const windowWidth = window.innerWidth;
   const isDesktop = windowWidth >= 1150;
-  const isTablet = windowWidth < 1150 && windowWidth >= 768;
-  const isMobile = windowWidth < 768;
+  ////const isTablet = windowWidth < 1150 && windowWidth >= 768;
+  ////const isMobile = windowWidth < 768;
 
   const resetStates = () => {
     setCartItems([]);
@@ -34,6 +34,7 @@ function App() {
       }, {})
     );
     setOrderConfirmed(false);
+    setCartVisible(false);
   };
 
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -99,21 +100,21 @@ function App() {
   return (
     <div>
       <div>
-        {isTablet && (
+        {!isDesktop && (
           <ButtonCart
             count={cartItems.reduce((sum, item) => sum + item.count, 0)}
             onClick={toggleCart}
           />
         )}
       </div>
-      {CartVisible && (isTablet || isMobile) && (
+      {CartVisible && !isDesktop && (
         <Cart
           cartItems={cartItems}
           totalPrice={totalPrice}
           removeItem={removeItem}
           confirmOrder={() => setOrderConfirmed(true)}
-          onClose={toggleCart}
           overlay={true}
+          onClose={toggleCart}
         />
       )}
       {orderConfirmed && (
@@ -125,7 +126,7 @@ function App() {
       )}
       <div className="header">
         <div>
-          <h1>Deserts</h1>
+          <h1>Desserts</h1>
           <div className="app">
             <div className="product-list">
               {products.map((product) => (
